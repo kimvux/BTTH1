@@ -140,7 +140,7 @@ void xuat (flight a){
     cout << setw(2) << setfill('0') << a.info.hour << ":" << setw(2) << setfill('0') << a.info.minute << '\t' << setw(2) << setfill('0') << a.info.d << "/" << setw(2) << setfill('0') << a.info.m << "/" << a.info.y << '\t' << a.id << '\t' << a.departure << '\t' << '\t' << a.arrival << endl;
 }
 void timkiem (vector<flight> arr, int n, int button){
-//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do, lua chon cua nguoi dung muon thuc hien mot trong cac chuc nang tim kiem
+//dau vao: danh sach cac chuyen bay, so chuyen bay trong danh sach do, lua chon cua nguoi dung muon thuc hien mot trong cac chuc nang tim kiem
 //dau ra: thong tin cua cac chuyen bay thoa dieu kien tim kiem duoc lua chon boi nguoi dung
 //ham nay se thuc 1 trong 3 chuc nang tim kiem duoc nguoi dung chon
 
@@ -200,7 +200,7 @@ void myswap(flight &a ,flight &b){
     b = ex1;
 }
 void mysort (vector<flight> &arr, int n){
-//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do
+//dau vao: danh sach cac chuyen bay, so chuyen bay trong danh sach do
 //dau ra: mang chuyen bay da duoc sap xep theo thoi gian khoi hanh tang dan
 //ham se so sanh tu nam --> phut de hoan doi du lieu 2 chuyen bay neu phan tu chuyen bay truoc do co thoi gian lon hon
     for (int i=0 ; i<n-1 ; ++i)
@@ -226,7 +226,7 @@ void mysort (vector<flight> &arr, int n){
         }
 }
 void danhsachtheongay (vector<flight> &arr, int n){
-//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do
+//dau vao: danh sach cac chuyen bay, so chuyen bay trong danh sach do
 //dau ra: xuat danh sach cac chuyen bay khoi hanh tu mot noi cu the, trong mot ngay cu the
 //ham se cho phep nguoi dung nhap vao dia danh va mot ngay, sau do duyet qua mang cac chuyen bay de tim chuyen bay co thong tin trung khop
     times a;
@@ -251,7 +251,7 @@ void danhsachtheongay (vector<flight> &arr, int n){
             xuat(arr[i]);
 }
 void demsoluongchuyenbay (vector<flight> &arr, int n){
-//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do
+//dau vao: danh sach cac chuyen bay, so chuyen bay trong mang do
 //dau ra: xuat ra man hinh so luong chuyen bay di tu mot noi cu the, den mot noi cu the
 //ham se cho phep nguoi dung nhap va noi di va diem den, sau do duyet qua mang cac chuyen bay de tim chuyen bay co thong tin trung khop
     string d,a;
