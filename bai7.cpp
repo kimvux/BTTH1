@@ -227,7 +227,8 @@ void mysort (vector<flight> &arr, int n){
 }
 void danhsachtheongay (vector<flight> &arr, int n){
 //dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do
-//dau ra: xuat danh sach cac chuyen bay co noi khoi hanh va thoi gian khoi hanh
+//dau ra: xuat danh sach cac chuyen bay khoi hanh tu mot noi cu the, trong mot ngay cu the
+//ham se cho phep nguoi dung nhap vao dia danh va mot ngay, sau do duyet qua mang cac chuyen bay de tim chuyen bay co thong tin trung khop
     times a;
     string b;
     cout << "Nhap ngay ban muon tra cuu: ";
@@ -250,6 +251,9 @@ void danhsachtheongay (vector<flight> &arr, int n){
             xuat(arr[i]);
 }
 void demsoluongchuyenbay (vector<flight> &arr, int n){
+//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do
+//dau ra: xuat ra man hinh so luong chuyen bay di tu mot noi cu the, den mot noi cu the
+//ham se cho phep nguoi dung nhap va noi di va diem den, sau do duyet qua mang cac chuyen bay de tim chuyen bay co thong tin trung khop
     string d,a;
     cout << "Nhap diem khoi hanh: ";
     getline(cin,d);
@@ -282,8 +286,6 @@ int main(){
         arr.push_back(a);
     }
     mysort(arr,n);
-
-//test
 
     int chon;
     while (1){
