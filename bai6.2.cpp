@@ -6,6 +6,11 @@ struct hocsinh{
     string xeploai;
 };
 void fixname (string &x){
+//dau vao: chuoi ten cua hoc sinh
+//dau ra: chuoi ten do duoc sua thanh dang: in hoa ki tu dau, cac ki tu con lai in thuong
+//ham se chia nho chuoi ten thanh tung chuoi con (stringstream),
+//sau do in hoa ki tu dau va in thuong cac ki tu con lai cua cac chuoi con,
+//cuoi cung ghep cac chuoi con lai thanh ten hoan chinh
     stringstream ss(x);
     string word;
     string name;
@@ -19,6 +24,9 @@ void fixname (string &x){
     x = name;
 }
 void nhap(hocsinh &x){
+//dau vao: tham chieu den mot phan tu hoc sinh
+//dau ra: thong tin cua phan tu do duoc nhap vao
+//ham se cho phep nguoi dung nhap thong tin hoc sinh, ham se tu tinh toan diem trung binh va xep loai hoc sinh theo diem trung binh vua tinh
     cout << "Nhap ten hoc sinh: ";
     cin.ignore();
     getline(cin,x.ten);
@@ -63,12 +71,18 @@ void nhap(hocsinh &x){
     else x.xeploai = "Yeu";
 }
 hocsinh DTBmax (vector<hocsinh> arr){
+//dau vao: danh sach cac hoc sinh
+//dau ra: hoc sinh co diem trung binh cao nhat
+//ham se duyet qua danh sach cac hoc sinh de tim ra hoc sinh co diem trung binh cao nhat
     hocsinh a = arr[0];
     for (int i=1 ;i<arr.size(); ++i)
         if (arr[i].dtb > a.dtb) a = arr[i];
     return a;
 }
 void timkiem (vector<hocsinh> arr){
+//dau vao: danh sach cac hoc sinh
+//dau ra: xuat ra man hinh danh sach cac hoc sinh co ten hoac tu khoa trung khop
+//ham se cho nguoi dung nhap vao mot ten day du hoac tu khoa, sau do duyet qua danh sach de tim hoc sinh co ten lien quan
     string name;
     cout << "Moi ban nhap ten/tu khoa can tim: ";
     cin.ignore();
@@ -85,6 +99,9 @@ void timkiem (vector<hocsinh> arr){
     if (check == 0) cout << "....NOT FOUND....\n";
 }
 void toansort (vector<hocsinh> &arr){
+//dau vao: danh sach cac hoc sinh
+//dau ra: danhh sach cac hoc sinh da duoc sap xep theo diem toan tang dan
+//ham se sap xep lai vi tri cac hoc sinh trong danh sach theo diem toan tang dan
     for (int i=0 ; i<arr.size()-1 ; ++i)
         for (int j=i+1 ; j<arr.size() ; ++j)
             if (arr[i].toan > arr[j].toan){
@@ -94,6 +111,10 @@ void toansort (vector<hocsinh> &arr){
             }
 }
 void danhsachtoan (vector<hocsinh> arr){
+//dau vao: danh sach cac hoc sinh
+//dau ra: xuat ra danh sach cac hoc sinh co diem toan thap nhat, voi so luong hoc sinh duoc xuat ra duoc nguoi dung nhap vao
+//ham se cho phep nguoi dung nhap vao so hoc sinh can xuat danh sach,
+//sau do xuat ra man hinh cac hoc sinh co diem toan tang dan (di tu ban hoc sinh co diem thap nhat)
     cout << "Nhap vao so hoc sinh (co diem toan thap nhat) ban muon xuat danh sach: ";
     int n;
     cin >> n;
@@ -106,6 +127,9 @@ void danhsachtoan (vector<hocsinh> arr){
         cout << i+1 << ". " << arr[i].ten << '\t' << "Diem toan: " << arr[i].toan << endl;
 }
 void xuatdanhsachhocsinh (vector<hocsinh> arr){
+//dau vao: danh sach cac hoc sinh
+//dau ra: xuat ra man hinh danh sach toan bo hoc sinh
+//ham nay xuat thong tin
     cout << "TEN HOC SINH" << '\t' << '\t' << "TOAN" << '\t' << "VAN" << '\t' << "ANH" << '\t' << "DTB" << '\t' << "XEP LOAI" << endl;
     cout << "----------------------------------------------------------------" << endl;
     for (int i=0; i<arr.size() ; i++)
@@ -124,7 +148,6 @@ int main(){
         arr.push_back(x);
     }
     toansort(arr);
-//test
     int button;
     while (1){
         system("cls");
