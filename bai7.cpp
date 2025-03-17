@@ -14,11 +14,17 @@ struct flight {
     times info;
 };
 bool namnhuan (int year){
+//dau vao: nam cua ngay khoi hanh cua chuyen bay
+//dau ra: true neu nam do la nam nhuan, va nguoc lai
+//ham se kiem tra cac dieu kien cua nam nhuan
     if (year % 400 == 0) return true;
     if (year % 4 == 0 && year % 100 != 0) return true;
     return false;
 }
 bool checkID (string a){
+//dau vao: chuoi ma cua chuyen bay
+//dau ra: true neu chuoi thoa dieu kien cua ma chuyen bay, false neu khong thoa
+//ham se kiem tra xem co ki tu dac biet hay khoang trang hay khong
     if (a.size()>5 || a.size()<1) return false;
     for (int i=0 ; i<a.size() ; ++i){
         if (a[i] == ' ')
@@ -32,6 +38,9 @@ bool checkID (string a){
     return true;
 }
 bool checkDate_Info (times a){
+//dau vao: ngay khoi hanh cua chuyen bay
+//dau ra: true neu ngay do thoa cac dieu kien cua ngay trong nam, false neu khong thoa
+//ham se kiem tra chi so cua ngay, thang, nam xem co dung voi dieu kien co ban hay khong
     if (a.m < 1 || a.m > 12) return false;
     if (a.d < 1 || a.d > 31) return false;
     if (namnhuan(a.y) == true)
@@ -45,10 +54,18 @@ bool checkDate_Info (times a){
     return true;
 }
 bool checkTime_Info (times a){
+//dau vao: gio khoi hanh cua chuyen bay
+//dau ra: true neu gio do thoa cac dieu kien cua gio va phut, false neu khong thoa
+//ham se kiem tra dieu kien cua gio va phut
     if (a.hour < 0 || a.hour > 23 || a.minute < 0 || a.minute > 59) return false;
     return true;
 }
 void fixname (string &a){
+//dau vao: chuoi ten dia danh cua noi di hoac noi den
+//dau ra: chuoi ten do duoc sua thanh dang: in hoa ki tu dau, cac ki tu con lai in thuong
+//ham se chia nho chuoi ten thanh tung chuoi nho bang stringstream,
+//sau do in hoa ki tu dau va in thuong cac ki tu con lai cua cac chuoi nho,
+//sau do ghep cac chuoi nho lai thanh ten hoan chinh
     stringstream ss(a);
     string word;
     string name;
@@ -62,6 +79,9 @@ void fixname (string &a){
     a = name;
 }
 bool checkName (string a){
+//dau vao: chuoi ten cua dia danh
+//dau ra: true neu chuoi ten khong chua ki tu dac biet, false neu khong thoa dieu kien
+//ham se duyet qua tung ki tu, kiem tra co phai ki tu dac biet hay khong
     if (a.size() < 1 || a.size() > 20) return false;
     for (int i=0 ; i<a.size() ; ++i){
         if (a[i] == ' ') continue;
@@ -70,6 +90,9 @@ bool checkName (string a){
     return true;
 }
 void nhap (flight &a){
+//dau vao: tham chieu den mot phan tu chuyen bay
+//dau ra: cac thong tin cua phan tu do duoc nhap vao
+//ham se thuc hien viec nhap du lieu cho 1 chuyen bay 
     cout << "===========================================================\n";
 //ID
     cout << "Nhap ma chuyen bay: ";
@@ -111,9 +134,17 @@ void nhap (flight &a){
     fixname(a.arrival);
 }
 void xuat (flight a){
+//dau vao: du lieu cua mot chuyen bay
+//dau ra: xuat thong tin chuyen bay ra man hinh
+//ham nay xuat thong tin
     cout << setw(2) << setfill('0') << a.info.hour << ":" << setw(2) << setfill('0') << a.info.minute << '\t' << setw(2) << setfill('0') << a.info.d << "/" << setw(2) << setfill('0') << a.info.m << "/" << a.info.y << '\t' << a.id << '\t' << a.departure << '\t' << '\t' << a.arrival << endl;
 }
 void timkiem (vector<flight> arr, int n, int button){
+//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do, lua chon cua nguoi dung muon thuc hien mot trong cac chuc nang tim kiem
+//dau ra: thong tin cua cac chuyen bay thoa dieu kien tim kiem duoc lua chon boi nguoi dung
+//ham nay se thuc 1 trong 3 chuc nang tim kiem duoc nguoi dung chon
+
+//tim kiem bang ma chuyen bay
     if (button == 1){
         string a;
         cout << "Moi ban nhap ma chuyen bay: ";
@@ -127,6 +158,7 @@ void timkiem (vector<flight> arr, int n, int button){
         }
         if (check == 0) cout << "....NOT FOUND....\n";
     }
+//tim kiem bang ten hoac tu khoa cua noi khoi hanh chuyen bay
     if (button == 2){
         string name;
         cout << "Moi ban nhap ten/tu khoa can tim: ";
@@ -142,6 +174,7 @@ void timkiem (vector<flight> arr, int n, int button){
             }
         if (check == 0) cout << "....NOT FOUND....\n";
     }
+//tim kiem bang ten hoac tu khoa cua diem den chuyen bay
     if (button == 3){
         string name;
         cout << "Moi ban nhap ten/tu khoa can tim: ";
@@ -159,12 +192,17 @@ void timkiem (vector<flight> arr, int n, int button){
     }
 }
 void myswap(flight &a ,flight &b){
+//dau vao: du lieu cua 2 chuyen bay
+//dau ra: 2 chuyen bay trao doi du lieu cho nhau
+//ham nay se hoan doi du lieu 2 phan tu
     flight ex1 = a;
     a = b;
     b = ex1;
 }
 void mysort (vector<flight> &arr, int n){
-//so sanh tu nam --> phut
+//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do
+//dau ra: mang chuyen bay da duoc sap xep theo thoi gian khoi hanh tang dan
+//ham se so sanh tu nam --> phut de hoan doi du lieu 2 chuyen bay neu phan tu chuyen bay truoc do co thoi gian lon hon
     for (int i=0 ; i<n-1 ; ++i)
         for (int j=i+1 ; j<n ; ++j){
             if (arr[i].info.y == arr[j].info.y){
@@ -188,6 +226,8 @@ void mysort (vector<flight> &arr, int n){
         }
 }
 void danhsachtheongay (vector<flight> &arr, int n){
+//dau vao: mot mang cac chuyen bay, so chuyen bay trong mang do
+//dau ra: xuat danh sach cac chuyen bay co noi khoi hanh va thoi gian khoi hanh
     times a;
     string b;
     cout << "Nhap ngay ban muon tra cuu: ";
