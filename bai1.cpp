@@ -1,4 +1,3 @@
-#include <stdio>
 #include <bits/stdc++.h>
 using namespace std;
 struct PHANSO{
