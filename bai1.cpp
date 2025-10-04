@@ -40,3 +40,5 @@ int main(){
     xuat(a);
     return 0;
 }
+//hi
+
